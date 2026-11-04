@@ -20,7 +20,7 @@ export interface Project {
 function ProjectPreview({ variant }: { variant: ProjectVariant }) {
   const previewByVariant: Record<ProjectVariant, { src: string; alt: string }> = {
     finance: { src: '/projects/shal-su.png', alt: 'Shal Su budget dashboard showing monthly balance, income, expenses, savings, and budget charts' },
-    tarot: { src: '/projects/tarot-booking.png', alt: 'BhOne Thaw Tarot website landing page with its reading introduction and booking call to action' },
+    tarot: { src: '/projects/tarot-booking.png', alt: 'Bhone Thaw Tarot website landing page with its reading introduction and booking call to action' },
     food: { src: '/projects/food-fusion.png', alt: 'FoodFusion website landing page with recipe navigation and community features' },
   };
   const preview = previewByVariant[variant];

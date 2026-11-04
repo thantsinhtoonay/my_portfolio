@@ -17,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 const projects: Project[] = [
   {
     number: '01', title: 'Shal Su', category: 'PERSONAL FINANCE',
-    description: 'An offline-first finance companion designed to make everyday money decisions feel clear and calm.',
+    description: 'An Online-first finance companion designed to make everyday money decisions feel clear and calm.',
     stack: ['TypeScript', 'React', 'Tailwind', 'Local Storage'], repository: 'finance_app',
     liveUrl: 'https://shal-su.thantsin.website/', variant: 'finance',
   },
@@ -126,7 +126,7 @@ export default function HomePage() {
     </section>
 
     <section className="section work-section wrap" id="work">
-      <div className="section-heading reveal-up"><div><p className="section-eyebrow"><span>01</span> Project</p><h2>Small teams.<br /><em>Big ideas shipped.</em></h2></div><div className="section-heading-aside"><p>A few projects built with care, curiosity, and an AI copilot.</p><span><i /> A selection of shipped work</span></div></div>
+      <div className="section-heading reveal-up"><div><p className="section-eyebrow"><span>01</span> Project</p><h2>Small teams.<br /><em>Big ideas shipped.</em></h2></div><div className="section-heading-aside"><p>A few projects built with care, curiosity.</p><span><i /> A selection of shipped work</span></div></div>
       <div className="projects-grid">{projects.map((project) => <ProjectCard project={project} key={project.number} />)}</div>
       <div className="work-bottom reveal-up"><span>MORE PROJECTS, EXPERIMENTS &amp; OPEN SOURCE</span><a href="https://github.com/thantsinhtoonay" target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={14} /></a></div>
     </section>
