@@ -249,3 +249,49 @@ body{background:radial-gradient(ellipse at 50% -12%,rgba(105,76,176,.14),transpa
   .work-section,.projects-grid,.project-card,.project-info>div:first-child{width:100%;min-width:0;max-width:100%}
   .project-screenshot{max-width:100%}
 }
+
+/* Career timeline and education credentials */
+.timeline-section,.education-section{padding-block:76px 30px;scroll-margin-top:40px}
+.education-section{padding-top:78px;padding-bottom:110px}
+.timeline-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:35px}
+.timeline-heading .section-eyebrow{margin:0 0 14px}
+.timeline-heading h2{margin:0;font-size:clamp(34px,4.6vw,53px);line-height:1.03;letter-spacing:-.055em;font-weight:520}
+.timeline-heading h2 em{font-style:normal;background:linear-gradient(105deg,#c9b7ff,#9b7cf0 56%,#8edbf0);color:transparent;background-clip:text;-webkit-background-clip:text}
+.timeline-tagline{max-width:340px;margin:0 0 4px;color:#96929f;font-size:12px;line-height:1.8}
+.career-timeline{position:relative;display:grid;gap:15px;margin:0;padding:0 0 0 27px;list-style:none}
+.career-timeline:before{position:absolute;top:18px;bottom:35px;left:8px;width:1px;content:"";background:linear-gradient(to bottom,rgba(129,140,248,.6),rgba(168,85,247,.34) 55%,transparent);box-shadow:0 0 12px rgba(139,92,246,.2)}
+.career-timeline-item{position:relative;min-width:0}
+.career-marker{position:absolute;z-index:1;top:25px;left:-27px;width:17px;height:17px;display:grid;place-items:center;border:1px solid rgba(167,139,250,.45);border-radius:50%;background:#111015;color:#c4b5fd;box-shadow:0 0 16px rgba(139,92,246,.12)}
+.career-marker.is-current{border-color:rgba(120,230,166,.55);box-shadow:0 0 18px rgba(120,230,166,.12)}
+.career-marker.is-current span,.career-period i{width:6px;height:6px;border-radius:50%;background:#78e6a6;box-shadow:0 0 12px rgba(120,230,166,.8);animation:pulse 1.8s infinite}
+.career-card,.credential-card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:linear-gradient(145deg,rgba(24,23,30,.83),rgba(15,15,19,.76));backdrop-filter:blur(16px);box-shadow:inset 0 1px rgba(255,255,255,.045),0 14px 38px rgba(0,0,0,.14);transition:transform .3s,border-color .3s,box-shadow .3s,background .3s}
+.career-card:hover,.credential-card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,.38);background:linear-gradient(145deg,rgba(28,25,38,.88),rgba(16,15,21,.82));box-shadow:0 18px 46px rgba(0,0,0,.25),0 0 28px rgba(124,58,237,.09),inset 0 1px rgba(255,255,255,.07)}
+.career-card{padding:20px 22px 22px}
+.career-card-topline,.credential-topline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.career-index,.credential-eyebrow{display:flex;align-items:center;gap:8px;color:#827d8c;font-size:8px;font-weight:650;letter-spacing:.14em}
+.career-index i{width:3px;height:3px;border-radius:50%;background:#a78bfa}
+.career-period,.credential-period{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid rgba(139,92,246,.2);border-radius:999px;background:rgba(139,92,246,.09);color:#c3afff;font-size:9px;white-space:nowrap}
+.career-period.current-period{border-color:rgba(120,230,166,.2);background:rgba(34,197,94,.08);color:#a7e9bc}
+.career-period i{width:5px;height:5px}
+.career-card-main{display:flex;align-items:flex-start;gap:14px;margin-top:18px}
+.career-icon,.credential-icon{width:38px;height:38px;flex:none;display:grid;place-items:center;border:1px solid rgba(167,139,250,.17);border-radius:11px;background:linear-gradient(145deg,rgba(139,92,246,.15),rgba(103,232,249,.045));color:#c4b5fd}
+.career-copy{min-width:0;flex:1}
+.career-copy h3,.credential-card h3{margin:0;color:#f2eff7;font-size:17px;line-height:1.4;font-weight:550;letter-spacing:-.025em}
+.career-company,.credential-institution{margin:4px 0 0;color:#c2bdcb;font-size:11px;line-height:1.6}
+.career-description,.credential-description{max-width:690px;margin:11px 0 0;color:#928e9a;font-size:11px;line-height:1.75}
+.career-arrow,.credential-arrow{flex:none;color:#77717f;transition:transform .25s,color .25s}
+.career-card:hover .career-arrow,.credential-card:hover .credential-arrow{transform:translate(2px,-2px);color:#c4b5fd}
+.credential-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.credential-card{min-height:230px;padding:20px 20px 25px}
+.credential-topline{margin-bottom:22px}
+.credential-period{font-size:8px;padding:6px 9px}
+.credential-eyebrow{margin:0 0 8px;font-size:8px}
+.credential-card h3{font-size:15px;min-height:42px}
+.credential-institution{color:#b5afbf}
+.credential-description{margin-top:12px;font-size:10px}
+.credential-arrow{position:absolute;right:19px;bottom:17px}
+.credential-featured{background:radial-gradient(ellipse at 100% 0,rgba(139,92,246,.12),transparent 48%),linear-gradient(145deg,rgba(24,23,30,.86),rgba(15,15,19,.78))}
+.credential-featured .credential-icon{border-color:rgba(196,181,253,.3);color:#d4c4ff;box-shadow:0 0 20px rgba(139,92,246,.11)}
+@media(max-width:900px){.timeline-section,.education-section{padding-top:64px}.credential-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.credential-card:last-child{grid-column:span 2;min-height:190px}}
+@media(max-width:640px){.timeline-section,.education-section{padding-block:52px 22px}.education-section{padding-bottom:84px}.timeline-heading{display:block;margin-bottom:25px}.timeline-heading h2{font-size:clamp(33px,9vw,44px)}.timeline-tagline{margin-top:14px;font-size:11px}.career-timeline{gap:12px;padding-left:23px}.career-timeline:before{left:7px}.career-marker{left:-23px;width:15px;height:15px}.career-card{padding:16px 14px 17px;border-radius:14px}.career-card-topline{align-items:flex-start}.career-index{font-size:7px;letter-spacing:.1em}.career-period{padding:6px 8px;font-size:8px}.career-card-main{gap:10px;margin-top:15px}.career-icon{width:33px;height:33px;border-radius:9px}.career-copy h3{font-size:14px;line-height:1.45}.career-company{font-size:10px}.career-description{font-size:10px;line-height:1.7}.career-arrow{display:none}.credential-grid{grid-template-columns:minmax(0,1fr);gap:11px}.credential-card,.credential-card:last-child{grid-column:auto;min-height:0;padding:17px 16px 27px}.credential-topline{margin-bottom:16px}.credential-card h3{min-height:0;font-size:15px}.credential-description{max-width:calc(100% - 10px)}}
+@media(prefers-reduced-motion:reduce){.career-card,.credential-card,.career-arrow,.credential-arrow,.career-marker.is-current span,.career-period i{transition:none;animation:none}}

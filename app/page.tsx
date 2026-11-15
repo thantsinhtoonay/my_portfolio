@@ -8,6 +8,8 @@ import { AlertCircle, ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check
 import ProjectCard, { type Project } from '@/components/ProjectCard';
 import ContactInfoHub from '@/components/ContactInfoHub';
 import BrandMark from '@/components/BrandMark';
+import WorkExperience from '@/components/WorkExperience';
+import EducationSection from '@/components/EducationSection';
 import { useSmoothScroll } from '@/components/SmoothScrollProvider';
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false, loading: () => <div className="hero-canvas scene-loading" aria-hidden="true"><div className="scene-orb" /></div> });
@@ -132,6 +134,8 @@ export default function HomePage() {
       <div className="work-bottom reveal-up"><span>MORE PROJECTS, EXPERIMENTS &amp; OPEN SOURCE</span><a href="https://github.com/thantsinhtoonay" target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={14} /></a></div>
     </section>
 
+    <WorkExperience />
+
     <section className="about-section" id="about"><div className="wrap">
       <div className="section-heading reveal-up"><div><p className="section-eyebrow"><span>02</span> HOW I BUILD</p><h2>Curious by default.<br /><em>Intentional by design.</em></h2></div><div className="section-heading-aside"><p>Good software starts with understanding the problem. Great software makes the solution feel effortless.</p></div></div>
       <div className="about-grid">
@@ -140,6 +144,8 @@ export default function HomePage() {
       </div>
       <div className="about-statement reveal-up"><span>THE SHORT VERSION</span><p>I use modern tools — including AI — to move faster through the boring parts, so I can spend more time making <em>the right things.</em></p><ArrowDownRight size={22} /></div>
     </div></section>
+
+    <EducationSection />
 
     <section className="contact-section wrap reveal-up" id="contact"><div className="contact-glow" /><div className="contact-topline"><span>03 / YOUR NEXT BUILD</span><span>OPEN TO GOOD CONVERSATIONS <i /></span></div><div className="contact-content"><p>HAVE A PROJECT IN MIND?</p><h2>Let&apos;s make<br />something <em>matter.</em></h2><div className="contact-actions"><a className="button-primary" href="mailto:mgnikyar@gmail.com">Start a conversation <ArrowUpRight size={16} /></a><button className={`copy-button ${emailCopyStatus === 'copied' ? 'is-copied' : ''} ${emailCopyStatus === 'error' ? 'is-error' : ''}`} type="button" onClick={copyEmail} aria-live="polite">{emailCopyStatus === 'copied' ? <Check size={15} /> : emailCopyStatus === 'error' ? <AlertCircle size={15} /> : <Mail size={15} />}{emailCopyStatus === 'copied' ? 'Email copied' : emailCopyStatus === 'error' ? 'Opening email…' : 'Copy email address'}</button></div></div><ContactInfoHub /><div className="contact-spark"><MousePointer2 size={18} /></div></section>
 
