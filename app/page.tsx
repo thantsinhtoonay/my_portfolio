@@ -60,9 +60,10 @@ export default function HomePage() {
       if (!motionPreference.matches) {
         gsap.fromTo('.hero-copy > *', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, stagger: 0.11, ease: 'power3.out', delay: 0.12 });
         gsap.utils.toArray<HTMLElement>('.reveal-up').forEach((element) => {
-          gsap.fromTo(element, { y: 34, opacity: 0 }, {
-            y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-            scrollTrigger: { trigger: element, start: 'top 88%', once: true },
+          const compactViewport = window.matchMedia('(max-width: 640px)').matches;
+          gsap.fromTo(element, { y: compactViewport ? 20 : 34, opacity: 0 }, {
+            y: 0, opacity: 1, duration: compactViewport ? 0.62 : 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: element, start: compactViewport ? 'top 94%' : 'top 88%', once: true },
           });
         });
       }
@@ -155,7 +156,7 @@ export default function HomePage() {
     </main>
     <nav className="floating-nav" aria-label="Section navigation">
       <span className="floating-nav-indicator" style={{ transform: `translateX(${activeNavIndex * 100}%)` }} aria-hidden="true" />
-      {sectionNavItems.map(({ id, label, icon: Icon }) => <a className="floating-nav-item" href={`#${id}`} key={id} aria-current={activeSection === id ? 'location' : undefined} onClick={(event) => navigateTo(event, `#${id}`)}>
+      {sectionNavItems.map(({ id, label, icon: Icon }) => <a className="floating-nav-item" href={`#${id}`} key={id} aria-label={`Go to ${label}`} aria-current={activeSection === id ? 'location' : undefined} onClick={(event) => navigateTo(event, `#${id}`)}>
         <Icon size={15} strokeWidth={1.8} aria-hidden="true" /><span>{label}</span>
       </a>)}
     </nav>
