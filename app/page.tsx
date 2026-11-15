@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState, type MouseEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { AlertCircle, ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check, FolderKanban, Github, Globe2, Layers3, Mail, MessageCircle, MousePointer2, Server, Sparkles, Terminal, UserRound } from 'lucide-react';
+import { AlertCircle, ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BriefcaseBusiness, Check, Download, FolderKanban, Github, Globe2, GraduationCap, Layers3, Mail, MessageCircle, MousePointer2, Server, Sparkles, Terminal, UserRound } from 'lucide-react';
 import ProjectCard, { type Project } from '@/components/ProjectCard';
 import ContactInfoHub from '@/components/ContactInfoHub';
 import BrandMark from '@/components/BrandMark';
@@ -43,7 +43,9 @@ const capabilityGroups = [
 
 const sectionNavItems = [
   { id: 'work', label: 'Projects', icon: FolderKanban },
+  { id: 'experience', label: 'Experience', icon: BriefcaseBusiness },
   { id: 'about', label: 'About', icon: UserRound },
+  { id: 'education', label: 'Education', icon: GraduationCap },
   { id: 'contact', label: 'Contact', icon: MessageCircle },
 ] as const;
 
@@ -69,7 +71,7 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    const sections = ['work', 'about', 'contact']
+    const sections = ['work', 'experience', 'about', 'education', 'contact']
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
     const observer = new IntersectionObserver((entries) => {
@@ -147,14 +149,14 @@ export default function HomePage() {
 
     <EducationSection />
 
-    <section className="contact-section wrap reveal-up" id="contact"><div className="contact-glow" /><div className="contact-topline"><span>03 / YOUR NEXT BUILD</span><span>OPEN TO GOOD CONVERSATIONS <i /></span></div><div className="contact-content"><p>HAVE A PROJECT IN MIND?</p><h2>Let&apos;s make<br />something <em>matter.</em></h2><div className="contact-actions"><a className="button-primary" href="mailto:mgnikyar@gmail.com">Start a conversation <ArrowUpRight size={16} /></a><button className={`copy-button ${emailCopyStatus === 'copied' ? 'is-copied' : ''} ${emailCopyStatus === 'error' ? 'is-error' : ''}`} type="button" onClick={copyEmail} aria-live="polite">{emailCopyStatus === 'copied' ? <Check size={15} /> : emailCopyStatus === 'error' ? <AlertCircle size={15} /> : <Mail size={15} />}{emailCopyStatus === 'copied' ? 'Email copied' : emailCopyStatus === 'error' ? 'Opening email…' : 'Copy email address'}</button></div></div><ContactInfoHub /><div className="contact-spark"><MousePointer2 size={18} /></div></section>
+    <section className="contact-section wrap reveal-up" id="contact"><div className="contact-glow" /><div className="contact-topline"><span>05 / YOUR NEXT BUILD</span><span>OPEN TO GOOD CONVERSATIONS <i /></span></div><div className="contact-content"><p>HAVE A PROJECT IN MIND?</p><h2>Let&apos;s make<br />something <em>matter.</em></h2><div className="contact-actions"><a className="button-primary" href="mailto:mgnikyar@gmail.com">Start a conversation <ArrowUpRight size={16} /></a><button className={`copy-button ${emailCopyStatus === 'copied' ? 'is-copied' : ''} ${emailCopyStatus === 'error' ? 'is-error' : ''}`} type="button" onClick={copyEmail} aria-live="polite">{emailCopyStatus === 'copied' ? <Check size={15} /> : emailCopyStatus === 'error' ? <AlertCircle size={15} /> : <Mail size={15} />}{emailCopyStatus === 'copied' ? 'Email copied' : emailCopyStatus === 'error' ? 'Opening email…' : 'Copy email address'}</button><a className="button-secondary cv-download" href="/thant-sin-htoo-nay-cv.pdf" download="Thant-Sin-Htoo-Nay-CV.pdf"><Download size={15} /> Download CV <span>PDF</span></a></div></div><ContactInfoHub /><div className="contact-spark"><MousePointer2 size={18} /></div></section>
 
     <footer className="site-footer wrap"><a className="footer-brand" href="#top"><BrandMark /><span>Thant Sin Htoo Nay<small>Full-Stack &amp; AI Web Developer</small></span></a><p>Thoughtfully built, with a little help from the future. <span>© {new Date().getFullYear()}</span></p><div className="footer-links"><a href="https://github.com/thantsinhtoonay" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={13} /></a><a href="mailto:mgnikyar@gmail.com">Email <ArrowUpRight size={13} /></a><a href="#top">Back to top <ArrowRight size={13} /></a></div></footer>
     </main>
     <nav className="floating-nav" aria-label="Section navigation">
       <span className="floating-nav-indicator" style={{ transform: `translateX(${activeNavIndex * 100}%)` }} aria-hidden="true" />
       {sectionNavItems.map(({ id, label, icon: Icon }) => <a className="floating-nav-item" href={`#${id}`} key={id} aria-current={activeSection === id ? 'location' : undefined} onClick={(event) => navigateTo(event, `#${id}`)}>
-        <Icon size={16} strokeWidth={1.8} aria-hidden="true" /><span>{label}</span>
+        <Icon size={15} strokeWidth={1.8} aria-hidden="true" /><span>{label}</span>
       </a>)}
     </nav>
   </>;
