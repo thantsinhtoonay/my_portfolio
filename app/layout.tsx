@@ -6,6 +6,10 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Thant Sin Htoo Nay — Full-Stack & AI Web Developer',
   description: 'Building scalable web apps with PHP, Laravel, TypeScript, and AI-accelerated workflows.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
