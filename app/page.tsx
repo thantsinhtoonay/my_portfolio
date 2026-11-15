@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState, type MouseEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { AlertCircle, ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check, Github, Globe2, Layers3, Mail, MousePointer2, Server, Sparkles, Terminal } from 'lucide-react';
+import { AlertCircle, ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check, FolderKanban, Github, Globe2, Layers3, Mail, MessageCircle, MousePointer2, Server, Sparkles, Terminal, UserRound } from 'lucide-react';
 import ProjectCard, { type Project } from '@/components/ProjectCard';
 import ContactInfoHub from '@/components/ContactInfoHub';
 import BrandMark from '@/components/BrandMark';
@@ -39,8 +39,13 @@ const capabilityGroups = [
   { icon: Sparkles, label: 'AI & Modern Workflow', items: ['AI Engineering', 'Prompt-to-code workflows', 'AI-assisted debugging', 'Git & GitHub', 'Composer', 'npm', 'Vercel'] },
 ];
 
+const sectionNavItems = [
+  { id: 'work', label: 'Projects', icon: FolderKanban },
+  { id: 'about', label: 'About', icon: UserRound },
+  { id: 'contact', label: 'Contact', icon: MessageCircle },
+] as const;
+
 export default function HomePage() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [emailCopyStatus, setEmailCopyStatus] = useState<'idle' | 'copied' | 'error'>('idle');
   const [activeSection, setActiveSection] = useState('work');
   const smoothScroll = useSmoothScroll();
@@ -92,21 +97,17 @@ export default function HomePage() {
     window.setTimeout(() => setEmailCopyStatus('idle'), 1800);
   };
 
-  const closeMenu = () => setMenuOpen(false);
   const navigateTo = (event: MouseEvent<HTMLAnchorElement>, target: string) => {
     event.preventDefault();
-    closeMenu();
     smoothScroll(target);
   };
+  const activeNavIndex = Math.max(0, sectionNavItems.findIndex(({ id }) => id === activeSection));
 
-  return <main>
-    <nav className="site-nav wrap" aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') closeMenu(); }}>
-      <a className="brand" href="#top" aria-label="Thant Sin Htoo Nay home"><BrandMark /><span>Thant Sin Htoo<b> Nay</b></span></a>
-      <div className={`nav-links ${menuOpen ? 'nav-open' : ''}`} id="primary-navigation">
-        <a href="#work" aria-current={activeSection === 'work' ? 'location' : undefined} onClick={(event) => navigateTo(event, '#work')}>Projects</a><a href="#about" aria-current={activeSection === 'about' ? 'location' : undefined} onClick={(event) => navigateTo(event, '#about')}>About</a><a href="#contact" aria-current={activeSection === 'contact' ? 'location' : undefined} onClick={(event) => navigateTo(event, '#contact')}>Contact</a>
-      </div>
+  return <>
+    <main>
+    <nav className="site-nav wrap" aria-label="Main navigation">
+      <a className="brand" href="#top" onClick={(event) => navigateTo(event, '#top')} aria-label="Thant Sin Htoo Nay home"><BrandMark /><span>Thant Sin Htoo<b> Nay</b></span></a>
       <a className="nav-availability" href="mailto:mgnikyar@gmail.com"><i /> Available for work <ArrowUpRight size={14} /></a>
-      <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-controls="primary-navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span className={`menu-icon ${menuOpen ? 'menu-icon-open' : ''}`} aria-hidden="true"><i /><i /></span></button>
     </nav>
 
     <section className="hero wrap" id="top">
@@ -143,5 +144,12 @@ export default function HomePage() {
     <section className="contact-section wrap reveal-up" id="contact"><div className="contact-glow" /><div className="contact-topline"><span>03 / YOUR NEXT BUILD</span><span>OPEN TO GOOD CONVERSATIONS <i /></span></div><div className="contact-content"><p>HAVE A PROJECT IN MIND?</p><h2>Let&apos;s make<br />something <em>matter.</em></h2><div className="contact-actions"><a className="button-primary" href="mailto:mgnikyar@gmail.com">Start a conversation <ArrowUpRight size={16} /></a><button className={`copy-button ${emailCopyStatus === 'copied' ? 'is-copied' : ''} ${emailCopyStatus === 'error' ? 'is-error' : ''}`} type="button" onClick={copyEmail} aria-live="polite">{emailCopyStatus === 'copied' ? <Check size={15} /> : emailCopyStatus === 'error' ? <AlertCircle size={15} /> : <Mail size={15} />}{emailCopyStatus === 'copied' ? 'Email copied' : emailCopyStatus === 'error' ? 'Opening email…' : 'Copy email address'}</button></div></div><ContactInfoHub /><div className="contact-spark"><MousePointer2 size={18} /></div></section>
 
     <footer className="site-footer wrap"><a className="footer-brand" href="#top"><BrandMark /><span>Thant Sin Htoo Nay<small>Full-Stack &amp; AI Web Developer</small></span></a><p>Thoughtfully built, with a little help from the future. <span>© {new Date().getFullYear()}</span></p><div className="footer-links"><a href="https://github.com/thantsinhtoonay" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={13} /></a><a href="mailto:mgnikyar@gmail.com">Email <ArrowUpRight size={13} /></a><a href="#top">Back to top <ArrowRight size={13} /></a></div></footer>
-  </main>;
+    </main>
+    <nav className="floating-nav" aria-label="Section navigation">
+      <span className="floating-nav-indicator" style={{ transform: `translateX(${activeNavIndex * 100}%)` }} aria-hidden="true" />
+      {sectionNavItems.map(({ id, label, icon: Icon }) => <a className="floating-nav-item" href={`#${id}`} key={id} aria-current={activeSection === id ? 'location' : undefined} onClick={(event) => navigateTo(event, `#${id}`)}>
+        <Icon size={16} strokeWidth={1.8} aria-hidden="true" /><span>{label}</span>
+      </a>)}
+    </nav>
+  </>;
 }
