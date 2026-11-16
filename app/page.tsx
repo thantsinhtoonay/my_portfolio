@@ -52,6 +52,7 @@ const sectionNavItems = [
 export default function HomePage() {
   const [emailCopyStatus, setEmailCopyStatus] = useState<'idle' | 'copied' | 'error'>('idle');
   const [activeSection, setActiveSection] = useState('work');
+  const [navHidden, setNavHidden] = useState(false);
   const smoothScroll = useSmoothScroll();
 
   useEffect(() => {
@@ -84,6 +85,35 @@ export default function HomePage() {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let previousY = window.scrollY;
+    const updateDockVisibility = () => {
+      const currentY = window.scrollY;
+      if (window.innerWidth > 640) {
+        setNavHidden(false);
+        previousY = currentY;
+        return;
+      }
+      if (currentY < 110) {
+        setNavHidden(false);
+        previousY = currentY;
+        return;
+      }
+      const movement = currentY - previousY;
+      if (Math.abs(movement) < 7) return;
+      if (movement < 0) setNavHidden(false);
+      else if (currentY > 170 && movement > 0) setNavHidden(true);
+      previousY = currentY;
+    };
+
+    window.addEventListener('scroll', updateDockVisibility, { passive: true });
+    window.addEventListener('resize', updateDockVisibility, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', updateDockVisibility);
+      window.removeEventListener('resize', updateDockVisibility);
+    };
   }, []);
 
   const scrollToProjects = () => {
@@ -154,10 +184,10 @@ export default function HomePage() {
 
     <footer className="site-footer wrap"><a className="footer-brand" href="#top"><BrandMark /><span>Thant Sin Htoo Nay<small>Full-Stack &amp; AI Web Developer</small></span></a><p>Thoughtfully built, with a little help from the future. <span>© {new Date().getFullYear()}</span></p><div className="footer-links"><a href="https://github.com/thantsinhtoonay" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={13} /></a><a href="mailto:mgnikyar@gmail.com">Email <ArrowUpRight size={13} /></a><a href="#top">Back to top <ArrowRight size={13} /></a></div></footer>
     </main>
-    <nav className="floating-nav" aria-label="Section navigation">
+    <nav className={`floating-nav${navHidden ? ' is-hidden' : ''}`} aria-label="Section navigation" aria-hidden={navHidden}>
       <span className="floating-nav-indicator" style={{ transform: `translateX(${activeNavIndex * 100}%)` }} aria-hidden="true" />
-      {sectionNavItems.map(({ id, label, icon: Icon }) => <a className="floating-nav-item" href={`#${id}`} key={id} aria-label={`Go to ${label}`} aria-current={activeSection === id ? 'location' : undefined} onClick={(event) => navigateTo(event, `#${id}`)}>
-        <Icon size={15} strokeWidth={1.8} aria-hidden="true" /><span>{label}</span>
+      {sectionNavItems.map(({ id, label, icon: Icon }) => <a className="floating-nav-item" href={`#${id}`} key={id} aria-label={`Go to ${label}`} data-label={label} aria-current={activeSection === id ? 'location' : undefined} tabIndex={navHidden ? -1 : 0} onClick={(event) => navigateTo(event, `#${id}`)}>
+        <Icon size={15} strokeWidth={1.8} aria-hidden="true" /><span className="floating-nav-label">{label}</span>
       </a>)}
     </nav>
   </>;
