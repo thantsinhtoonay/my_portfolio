@@ -230,7 +230,6 @@ body{background:radial-gradient(ellipse at 50% -12%,rgba(105,76,176,.14),transpa
   body{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
   .site-nav{height:64px}
   .floating-nav{left:max(12px,calc((100vw - 280px)/2));right:auto;width:min(280px,calc(100vw - 24px));bottom:calc(10px + env(safe-area-inset-bottom));padding:5px;border-radius:16px;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .3s,border-color .25s}
-  .floating-nav.is-hidden{transform:translateY(calc(100% + 18px));opacity:0;pointer-events:none}
   .floating-nav-indicator{top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/5);border-radius:13px}
   .floating-nav-item{height:44px;gap:3px;font-size:7.5px;letter-spacing:-.02em}
   .floating-nav-label{display:none}
@@ -465,7 +464,6 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
     padding:5px;
     border-radius:17px;
   }
-  .floating-nav.is-hidden{opacity:1;pointer-events:auto;transform:none}
   .floating-nav-indicator{top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/5);border-radius:12px}
   .floating-nav-item{height:44px;gap:0;font-size:0}
   .floating-nav-label{display:none}
