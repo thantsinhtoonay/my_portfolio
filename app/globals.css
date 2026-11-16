@@ -453,3 +453,42 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   .project-links{margin-left:auto}
   .floating-nav{left:9px;right:9px;width:min(280px,calc(100% - 18px))}
 }
+
+/* Persistent compact dock for phone and tablet portrait widths. */
+@media (max-width:760px){
+  .floating-nav{
+    left:12px;
+    right:12px;
+    width:min(280px,calc(100% - 24px));
+    margin-inline:auto;
+    bottom:calc(10px + env(safe-area-inset-bottom));
+    padding:5px;
+    border-radius:17px;
+  }
+  .floating-nav.is-hidden{opacity:1;pointer-events:auto;transform:none}
+  .floating-nav-indicator{top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/5);border-radius:12px}
+  .floating-nav-item{height:44px;gap:0;font-size:0}
+  .floating-nav-label{display:none}
+  .floating-nav-item svg{width:17px;height:17px}
+  .floating-nav-item[aria-current="location"]:after{
+    position:absolute;
+    left:50%;
+    bottom:calc(100% + 8px);
+    content:attr(data-label);
+    padding:6px 9px;
+    transform:translate(-50%,0);
+    border:1px solid rgba(196,181,253,.22);
+    border-radius:8px;
+    background:rgba(20,18,27,.94);
+    box-shadow:0 7px 22px rgba(0,0,0,.28);
+    color:#e9e2fb;
+    font-size:10px;
+    white-space:nowrap;
+    pointer-events:none;
+  }
+}
+@media (max-width:380px){
+  .floating-nav{left:10px;right:10px;width:min(270px,calc(100% - 20px));padding:4px}
+  .floating-nav-indicator{top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/5)}
+  .floating-nav-item{height:42px}
+}
