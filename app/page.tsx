@@ -8,6 +8,7 @@ import { AlertCircle, ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Brief
 import ProjectCard, { type Project } from '@/components/ProjectCard';
 import ContactInfoHub from '@/components/ContactInfoHub';
 import BrandMark from '@/components/BrandMark';
+import ThemeToggle from '@/components/ThemeToggle';
 import WorkExperience from '@/components/WorkExperience';
 import EducationSection from '@/components/EducationSection';
 import { useSmoothScroll } from '@/components/SmoothScrollProvider';
@@ -112,7 +113,7 @@ export default function HomePage() {
     <main>
     <nav className="site-nav wrap" aria-label="Main navigation">
       <a className="brand" href="#top" onClick={(event) => navigateTo(event, '#top')} aria-label="Thant Sin Htoo Nay home"><BrandMark /><span>Thant Sin Htoo<b> Nay</b></span></a>
-      <a className="nav-availability" href="mailto:mgnikyar@gmail.com"><i /> Available for work <ArrowUpRight size={14} /></a>
+      <div className="site-nav-actions"><ThemeToggle /><a className="nav-availability" href="mailto:mgnikyar@gmail.com"><i /> Available for work <ArrowUpRight size={14} /></a></div>
     </nav>
 
     <section className="hero wrap" id="top">
