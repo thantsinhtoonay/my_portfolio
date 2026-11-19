@@ -628,3 +628,10 @@ html,body{transition:background-color .5s ease,color .4s ease}
 :root[data-theme="dark"] .project-card{background:linear-gradient(145deg,rgba(27,26,32,.96),rgba(18,18,23,.98))}
 :root[data-theme="dark"] .philosophy-card,:root[data-theme="dark"] .skill-card,:root[data-theme="dark"] .career-card,:root[data-theme="dark"] .credential-card{background:linear-gradient(145deg,rgba(29,27,35,.94),rgba(20,19,24,.92))}
 :root[data-theme="dark"] .contact-section{background:linear-gradient(115deg,#1b1921,#17161c 66%,#1e1926)}
+
+/* Keep credential arrows anchored to the card corner despite the card content layer rule. */
+.credential-card>.credential-arrow{position:absolute;right:18px;bottom:16px;z-index:2;margin:0;pointer-events:none}
+@media(max-width:640px){
+  .credential-card>.credential-arrow{right:14px;bottom:13px}
+  .credential-card{padding-bottom:42px}
+}
