@@ -590,3 +590,22 @@ html,body{transition:background-color .5s ease,color .4s ease}
   .theme-toggle,.theme-toggle svg,:root[data-theme] .theme-toggle-moon,:root[data-theme] .theme-toggle-sun{animation:none;transition:none}
   html,body{transition:none}
 }
+
+/* Softer light surfaces with stronger text and brand contrast. */
+:root[data-theme="light"]{--bg:#eeedf2;--white:#1b1822;--muted:#514c5a;--line:rgba(30,26,39,.18)}
+:root[data-theme="light"] body{background:radial-gradient(ellipse at 52% 18%,rgba(155,133,197,.13),transparent 55%),#eeedf2}
+:root[data-theme="light"] .brand,:root[data-theme="light"] .footer-brand{color:#312b3b}
+:root[data-theme="light"] .brand b{color:#17141c}
+:root[data-theme="light"] .brand-mark{filter:drop-shadow(0 1px 3px rgba(73,48,125,.4))}
+:root[data-theme="light"] .brand-mark-frame{stroke-width:1.7}
+:root[data-theme="light"] .brand-mark-glyph{filter:drop-shadow(0 1px 2px rgba(67,42,117,.65))}
+:root[data-theme="light"] .brand-mark-orbit{opacity:.8}
+:root[data-theme="light"] .hero-intro,:root[data-theme="light"] .section-heading-aside p,:root[data-theme="light"] .timeline-tagline,:root[data-theme="light"] .project-info p,:root[data-theme="light"] .career-description,:root[data-theme="light"] .credential-description{color:#514c5a}
+:root[data-theme="light"] .headline-accent,:root[data-theme="light"] .section-heading h2 em,:root[data-theme="light"] .contact-content h2 em{color:#7046bd}
+:root[data-theme="light"] .headline-outline{-webkit-text-stroke-color:rgba(42,35,54,.82)}
+:root[data-theme="light"] .hero-kicker,:root[data-theme="light"] .section-eyebrow,:root[data-theme="light"] .career-index,:root[data-theme="light"] .credential-eyebrow,:root[data-theme="light"] .contact-topline{color:#514b5a}
+:root[data-theme="light"] .site-nav-actions .nav-availability{color:#312b3b}
+:root[data-theme="light"] .theme-toggle{color:#55348f;border-color:rgba(43,34,59,.24);background:#e6e3eb}
+:root[data-theme="light"] .philosophy-card>p,:root[data-theme="light"] .about-statement p,:root[data-theme="light"] .career-company,:root[data-theme="light"] .credential-institution{color:#484251}
+:root[data-theme="light"] .floating-nav-item,:root[data-theme="light"] .floating-nav-item svg,:root[data-theme="light"] .footer-links a{color:#423b4c}
+:root[data-theme="light"] .contact-hub-subtitle,:root[data-theme="light"] .contact-hub-card p,:root[data-theme="light"] .contact-copy{color:#4d4656}
